@@ -49,39 +49,7 @@ namespace todoListTutorial {
             app.UseHttpsRedirection ();
             app.UseMvc ();
 
-            if (!context.Categorias.Any ()) {
-                context.Categorias.AddRange (new List<Categoria> () {
-                    new Categoria () {
-                            Nombre = "Escuela", Todos = new List<Todo> () {
-                                new Todo () {
-                                        Nombre = "Hacer tarea de Mate",
-                                            Descripcion = "Resolver problemas pag. 34",
-                                            Hecho = false
-                                    },
-                                    new Todo () {
-                                        Nombre = "Comenzar proyecto Programacion",
-                                            Descripcion = "Crear repositorio en github",
-                                            Hecho = false
-                                    }
-                            }
-                        },
-                        new Categoria () {
-                            Nombre = "Personal", Todos = new List<Todo> () {
-                                new Todo () {
-                                    Nombre = "Ir al GYM",
-                                        Descripcion = "Hacer cardio 30 min",
-                                        Hecho = false
-                                }
-                            }
-                        },
-                        new Categoria () {
-                            Nombre = "Trabajo"
-                        },
-                });
-
-                context.SaveChanges ();
-            }
-
+            DataSeed.Initialize(context);
         }
     }
 }
